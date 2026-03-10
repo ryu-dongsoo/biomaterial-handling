@@ -202,7 +202,95 @@ cv2.destroyAllWindows()
 
 ---
 
-## 4. Version Control & GitHub Submission Guide
+## 4. 💡 Advanced Discussion Topics
+
+### Discussion 1: Impact of Digital Aliasing on Shape Analysis
+
+**Background**: When measuring the circularity of a nearly perfect sphere-like apple using OpenCV, the result is approximately `0.85–0.9` rather than the theoretical `1.0`. This is due to aliasing — the pixel grid of digital images represents curved boundaries as stair-step patterns, causing the perimeter to be measured longer than its actual value.
+
+> **Discussion Prompt**: What software-based approaches could correct this perimeter over-estimation caused by aliasing? (e.g., subpixel contour detection, adjusting Gaussian blur intensity, resolution-dependent circularity convergence experiments, etc.)
+
+### Discussion 2: Industrial Applications of Circularity & Sphericity — Automated Agricultural Produce Sorting
+
+**Background**: In automated sorting lines for agricultural products, cameras must distinguish defective items with non-standard shapes in real-time using only 2D images. Circularity measures how closely a 2D projected shape resembles a circle, while sphericity measures 3D proximity to a sphere — but obtaining 3D information from a single camera is inherently challenging.
+
+> **Discussion Prompt**: To estimate 3D sphericity from only 2D images of an apple moving on a conveyor belt (one front view, one side view), what assumptions and algorithms are needed, and what are their limitations? Include in your discussion the significance of the pre-measured `pixel_T` (thickness) value used in this lab.
+
+### Discussion 3: Impact of Thresholding Method Selection on Shape Indices
+
+**Background**: This lab uses Otsu's automatic thresholding to separate the apple from the background. However, under non-uniform lighting conditions or when background colors are similar to the apple, binarization results may vary, distorting the contour and directly introducing errors into circularity and sphericity calculations.
+
+> **Discussion Prompt**: Besides Otsu's binarization, alternative techniques such as Adaptive Thresholding and HSV color space segmentation exist. What are the advantages and disadvantages of each for agricultural image analysis, and under what circumstances is each approach optimal?
+
+---
+
+## 5. 📝 Quiz Questions
+
+### Q1. [Theory] Definition of Circularity
+Which formula correctly represents **Circularity** as used in OpenCV-based image analysis?
+
+| Option | Formula |
+| --- | --- |
+| A | `Perimeter / Area` |
+| B | `Area / Perimeter²` |
+| **C** | **`(4 × π × Area) / Perimeter²`** |
+| D | `(Circumscribed circle area) / (Actual area)` |
+
+<details>
+<summary>View Answer & Explanation</summary>
+
+**Answer: C**  
+Circularity (Form Factor) is defined as `Circularity = (4πA) / P²`. A perfect circle yields 1.0, and more complex shapes approach 0. Since perimeter² is in the denominator, this metric is sensitive to contour noise.
+</details>
+
+### Q2. [Lab - Python] Role of Otsu's Thresholding
+Why is the `cv2.THRESH_OTSU` flag used in the `cv2.threshold()` function?
+
+| Option | Content |
+| --- | --- |
+| A | To automatically adjust image resolution |
+| **B** | **To automatically determine the optimal threshold for separating foreground and background via histogram analysis** |
+| C | To convert a color image to grayscale |
+| D | To calculate contour area |
+
+<details>
+<summary>View Answer & Explanation</summary>
+
+**Answer: B**  
+Otsu's method automatically finds the threshold that maximizes between-class variance in the image histogram, effectively separating background and foreground without requiring manual threshold specification.
+</details>
+
+### Q3. [Lab - Python] Meaning of Geometric Mean Diameter (GMD) in Sphericity Calculation
+In this lab, sphericity is calculated using `GMD = (L × W × T)^(1/3)`. What does the Geometric Mean Diameter (GMD) represent?
+
+<details>
+<summary>View Answer & Explanation</summary>
+
+**Answer: The geometric mean of three-dimensional measurements (Length L, Width W, Thickness T), representing the diameter of a sphere that would equivalently represent the irregular shape.**  
+The ratio of GMD to the maximum dimension (L) gives sphericity — values closer to 100% indicate a more sphere-like shape. Apples typically have ~90% sphericity, while grains range from 50–60%.
+</details>
+
+### Q4. [Theory] Purpose of Gaussian Blur Preprocessing
+What is the most important reason for applying Gaussian Blur immediately after grayscale conversion in the image analysis pipeline?
+
+| Option | Content |
+| --- | --- |
+| A | To reduce the number of color channels |
+| B | To enhance image contrast |
+| **C** | **To smooth surface texture and lighting noise, preventing perimeter over-estimation (circularity distortion) during binarization and contour extraction** |
+| D | To accurately measure object area |
+
+<details>
+<summary>View Answer & Explanation</summary>
+
+**Answer: C**  
+Fine spots, textures, and specular reflections on the apple surface create unnecessary contour irregularities after binarization, causing perimeter over-measurement. Since Perimeter² is in the denominator of the circularity formula, noise-induced perimeter increase distorts circularity below its actual value. Gaussian Blur removes this high-frequency noise beforehand.
+</details>
+
+---
+
+## 6. Version Control & GitHub Submission Guide
 
 *This course requires students to accumulate weekly assignments in a single master repository.*  
 *For detailed instructions on initial GitHub setup and assignment submission (push), please refer to the **[Integrated Lab Submission Guide](../README.md)** in the top-level directory.*
+
