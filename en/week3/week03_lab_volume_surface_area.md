@@ -168,7 +168,80 @@ plt.show()
 
 ---
 
-## 4. Version Control & GitHub Submission Guide
+## 4. 💡 Advanced Discussion Topics
+
+### Discussion 1: Limitations of Geometric Simplification & Vision-Based Measurement Algorithms
+
+**Background**: When manually computing volume and surface area by dividing an avocado into 5 segments (spherical caps and truncated cones) as in textbook Example 3-3, structural errors of approximately 8.03% for surface area and 4.33% for volume were observed compared to actual measurements (e.g., water displacement). In contrast, the Python lab subdivides the object into 100+ micro-segments and applies numerical integration (Simpson's Rule, etc.).
+
+> **Discussion Prompt**: Beyond simply increasing the number of subdivisions (n), what are the fundamental **'asymmetry limitations'** of single-view 2D profile rotation integration in Python, and how can these be addressed using modern 3D digital metrology (3D scanning, stereo vision, etc.)?
+
+### Discussion 2: Impact of Specific Surface Area on Processing Operations
+
+**Background**: Specific surface area — the ratio of surface area to volume — has a decisive influence on heat and mass transfer rates. Research shows that wheat (1,316 m²/m³), with its high specific surface, loses moisture significantly faster than soybeans (558 m²/m³) under identical drying conditions.
+
+> **Discussion Prompt**: Applying this physical property of specific surface area, what engineering strategies should be adopted when designing cooling and ventilation systems for storage facilities (silos) that must hold large quantities of fruits or grains for extended periods?
+
+### Discussion 3: Volume Measurement for Moisture-Absorbing Resources — Liquid Displacement vs. Air Pycnometer
+
+**Background**: Materials with low moisture permeability (such as potatoes and apples) can be accurately measured using water displacement based on Archimedes' principle. However, grains that rapidly absorb moisture require an air pycnometer based on Boyle's Law.
+
+> **Discussion Prompt**: When measuring with a sensor-integrated air pycnometer, beyond air compressibility and piston friction, what impact could **'temperature changes'** within the chamber have on measurement precision, and what cross-validation methods can improve data reliability?
+
+---
+
+## 5. 📝 Quiz Questions
+
+### Q1. [Theory] Primary Source of Error in Segmental Modeling
+What is the **most significant cause** of error when applying 'segmental modeling' to calculate the volume of irregularly shaped agricultural products?
+
+| Option | Content |
+| --- | --- |
+| A | Differences in internal moisture content of the bio-resource |
+| B | Errors in numerical integration formulas |
+| **C** | **Geometric assumptions that simplify the natural curvature and asymmetry of bio-resource surfaces into perfect mathematical shapes (truncated cones, spherical caps, etc.)** |
+| D | Quantization errors from calipers used during measurement |
+
+<details>
+<summary>View Answer & Explanation</summary>
+
+**Answer: C**  
+Because the continuous, fine curvature of a real avocado is simplified (approximated) by linearizing it into shapes like truncated cones, geometric distortion occurs (surface area error ~8.03%, volume error ~4.33%).
+</details>
+
+### Q2. [Lab - Python] Preprocessing Interpolation Technique
+The 2D contour data points obtained from the apple in Week 02 are discrete. What is the name of the **'preprocessing interpolation technique'** used in the Week 03 lab to smoothly connect these points into a mathematical function curve for improved integration precision?
+
+<details>
+<summary>View Answer & Explanation</summary>
+
+**Answer: Cubic Spline Interpolation**  
+Using SciPy's `CubicSpline`, measured data points are converted into 100+ smooth polynomial curve points, enabling accurate integration for 3D solid-of-revolution estimation.
+</details>
+
+### Q3. [Lab - Python] Numerical Integration Formula Comparison
+When computing the volume of a solid of revolution using SciPy's numerical integration library, which function (integration formula) provides higher precision than the `trapezoid` function by approximating intervals with **2nd-order parabolas**, making it especially suitable for curved agricultural product analysis?
+
+<details>
+<summary>View Answer & Explanation</summary>
+
+**Answer: Simpson's Rule (`scipy.integrate.simpson`)**  
+The Python lab implements and compares both the Trapezoidal Rule and Simpson's Rule. Simpson's Rule is mathematically advantageous for estimating the volume of organic curved surfaces.
+</details>
+
+### Q4. [Theory] Physical Law Behind the Air Pycnometer
+Because grains swell easily in water, an 'Air Pycnometer' — which uses two sealed cylinders and a pressure gauge — is used instead of water displacement for volume measurement. What is the **fundamental physical law** this instrument applies to relate volume and pressure?
+
+<details>
+<summary>View Answer & Explanation</summary>
+
+**Answer: Boyle's Law**  
+Based on the principle that at constant temperature, gas pressure and volume are inversely proportional, this method precisely calculates the absolute volume occupied by the sample.
+</details>
+
+---
+
+## 6. Version Control & GitHub Submission Guide
 
 *This course requires students to accumulate weekly assignments in a single master repository.*  
 *For detailed instructions on initial GitHub setup and assignment submission (push), please refer to the **[Integrated Lab Submission Guide](../README.md)** in the top-level directory.*
