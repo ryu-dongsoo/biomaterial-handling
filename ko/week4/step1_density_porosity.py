@@ -101,14 +101,34 @@ y_centers = np.linspace(5, 25, 3)
 z_centers = np.linspace(2.5, 12.5, 3)
 X, Y, Z = np.meshgrid(x_centers, y_centers, z_centers)
 
+# --- 공극(Void) 영역 시각화 추가 ---
+from scipy.spatial.distance import cdist
+# 빈 공간을 채울 미세 격자 생성
+vx, vy, vz = np.meshgrid(np.linspace(1, 39, 20), 
+                         np.linspace(1, 29, 15), 
+                         np.linspace(1, 14, 8))
+void_pts = np.vstack((vx.flatten(), vy.flatten(), vz.flatten())).T
+center_pts = np.vstack((X.flatten(), Y.flatten(), Z.flatten())).T
+
+# 객체(아보카도) 중심으로부터 일정 반경(R) 이상 떨어진 점들만 추출
+# 아보카도 체적 약 205cm^3 -> 구 환산 시 반경 약 3.66cm
+R_avocado = 3.6 
+distances = cdist(void_pts, center_pts)
+is_void = np.min(distances, axis=1) > R_avocado
+
+# 빈 공간(공극)을 붉은색 반투명 점으로 시각화 (유체나 공기를 붉은색 영역으로 표현)
+ax1.scatter(void_pts[is_void, 0], void_pts[is_void, 1], void_pts[is_void, 2], 
+            s=15, c='red', alpha=0.3, label='Void (공극)')
+
 # 아보카도들을 3D Scatter로 표시 (크기, 색상 조정)
-ax1.scatter(X, Y, Z, s=600, c='#8BC34A', alpha=0.9, edgecolors='#33691E')
+ax1.scatter(X, Y, Z, s=600, c='#8BC34A', alpha=1.0, edgecolors='#33691E', label='Avocado')
 
 ax1.set_title('Step 4-a: 3D 가상 패킹 (공극 직접 확인)', fontsize=14, pad=15)
 ax1.set_xlabel('길이 (40cm)')
 ax1.set_ylabel('너비 (30cm)')
 ax1.set_zlabel('높이 (15cm)')
 ax1.set_box_aspect((40, 30, 15))  # 박스 비율 보정
+ax1.legend(loc='upper right', fontsize=10)
 
 # ---- (B) 중앙: 밀도 비교 막대 차트 (Bar Chart) ----
 ax2 = fig.add_subplot(132)

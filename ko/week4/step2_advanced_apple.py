@@ -61,10 +61,28 @@ y_centers = np.linspace(5, 25, 3)
 z_centers = np.linspace(3.75, 11.25, 2)
 X, Y, Z = np.meshgrid(x_centers, y_centers, z_centers)
 
+# --- 공극(Void) 영역 시각화 추가 ---
+from scipy.spatial.distance import cdist
+vx, vy, vz = np.meshgrid(np.linspace(1, 39, 20), 
+                         np.linspace(1, 29, 15), 
+                         np.linspace(1, 14, 8))
+void_pts = np.vstack((vx.flatten(), vy.flatten(), vz.flatten())).T
+center_pts = np.vstack((X.flatten(), Y.flatten(), Z.flatten())).T
+
+# 사과 체적이 더 크므로(약 315) 구 환산 시 반경 약 4.22cm로 설정
+R_apple = np.cbrt(315.0 * (3/(4*np.pi))) if 'volume_single_cm3' not in locals() or volume_single_cm3 is None else np.cbrt(315.0 * (3/(4*np.pi)))
+distances = cdist(void_pts, center_pts)
+is_void = np.min(distances, axis=1) > 4.2 # 하드코딩된 대략적 사과 반경
+
+# 빈 공간(공극)을 시안색(Cyan) 반투명 점으로 시각화하여 사과(Red)와 시각적 대비
+ax1.scatter(void_pts[is_void, 0], void_pts[is_void, 1], void_pts[is_void, 2], 
+            s=15, c='cyan', alpha=0.3, label='Void (공극)')
+
 # 사과는 붉은색 톤으로 시각화
-ax1.scatter(X, Y, Z, s=800, c='#FF5252', alpha=0.9, edgecolors='#B71C1C')
+ax1.scatter(X, Y, Z, s=800, c='#FF5252', alpha=1.0, edgecolors='#B71C1C', label='Apple')
 ax1.set_title('Advanced: 사과 3D 가상 패킹 (24개)', fontsize=14, pad=15)
 ax1.set_box_aspect((40, 30, 15))
+ax1.legend(loc='upper right', fontsize=10)
 
 # ---- (B) 중앙: 밀도 갭 차트 ----
 ax2 = fig.add_subplot(132)
