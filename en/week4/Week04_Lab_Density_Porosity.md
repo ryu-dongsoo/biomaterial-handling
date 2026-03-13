@@ -55,18 +55,19 @@ This module covers a complete Python pipeline scaling from individual properties
 ### 📝 [Mandatory] Environment Setup & Execution Guide
 1. **Package Installation**: Install required libraries via terminal
    ```bash
-   pip install numpy matplotlib
+   pip install numpy matplotlib scipy
    ```
-2. **File Location**: `week4/step1_density_porosity.py` and `week4/step2_advanced_apple.py`
-3. **Execution**: Run the Python script iteratively
+2. **File Locations**: `week4/step1_density_porosity.py`, `week4/step2_advanced_apple.py`, and `week4/step3_random_packing.py`
+3. **Execution**: Run the Python scripts iteratively
    ```bash
    python step1_density_porosity.py    # Baseline Avocado Lab
    python step2_advanced_apple.py      # Advanced Apple Lab (after filling variables)
+   python step3_random_packing.py      # Virtual 3D Packing Simulation (Ordered vs Random)
    ```
 
 ---
 
-### 📊 Python Script Key Highlights (Step 1 ~ Step 4)
+### 📊 Python Script Key Highlights (Steps 1 ~ 3)
 
 #### 2-1. [Step 1] Particle Density
 - Individual density computation via mass and volume inputs
@@ -80,14 +81,21 @@ This module covers a complete Python pipeline scaling from individual properties
 - Systematic comparison of two distinct mathematical approaches
 - Verification confirming identity between `Density Ratio` formula and `Physical Volume Subtraction` formula
 
-#### 2-4. [Step 4] Unified Data Visualization
+#### 2-4. [Step 1 Visuals] Unified Data Visualization
 - **3D Virtual Packing (Scatter)**: Spatial arrangement of 45 avocados and direct visualization of void spaces
 - **Density Gap Analysis (Bar Chart)**: Numerical contrast between Particle vs. Bulk Density
 - **Occupancy Analysis (Pie Chart)**: Ratio of actual avocado volume versus porosity allocations
 
-#### 2-5. 🚀 [Advanced] Target Swap Exercise: Applying Apple Data
+#### 2-5. [Step 3] Virtual Packing Simulation Comparison (Ordered vs Random)
+![Ordered vs Random Packing](../../assets/ordered_vs_random.png)
+
+- **Objective**: Mathematically model and contrast the fitting capacity difference between an 'Ordered Grid' pattern and haphazardly pouring objects via 'Random Packing'.
+- **Algorithm Mechanism**: Implemented Monte Carlo coordination generators paired with spatial collision detection (`scipy.spatial.distance.cdist`) to prevent intersection.
+- **Outcome Assessment**: Direct 3D visualization illustrating the severe drop in capacity when produce randomly falls into a box compared to uniform stacking → **Empirical demonstration of Bulk Density collapse sans systematic arrangement/compaction**.
+
+#### 2-6. 🚀 [Advanced] Target Swap Exercise: Applying Apple Data
 - **Objective**: Adapt the baseline script to compute physical properties of a different agricultural product
-- **Assignment**: Replace the baseline avocado variables with the apple data below, execute the script, and analyze the outcomes
+- **Assignment**: Replace the baseline avocado variables with the apple data below, execute `step2_advanced_apple.py`, and analyze the outcomes
   - Individual Volume (`volume_single_cm3`): **315.0 cm³** (Reference: Week 2 Apple)
   - Individual Mass (`mass_single_g`): **280.0 g**
   - Loaded Object Count (`apple_count`): **24 units**
