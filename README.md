@@ -51,12 +51,14 @@ biomaterial-handling/
 │   ├── README.md      ← 한국어 메인 포트폴리오 문서
 │   ├── week2/         ← [2주차] 사과 원형도·구형도 분석 (Circularity & Sphericity)
 │   ├── week3/         ← [3주차] 아보카도 체적·표면적 추정 (Volume & Surface Area)
-│   └── week4/         ← [4주차] 농산물 밀도·공극률 측정 및 가상 패킹 (Density & Porosity)
+│   ├── week4/         ← [4주차] 농산물 밀도·공극률 측정 및 가상 패킹 (Density & Porosity)
+│   └── week5/         ← [5주차] 유변학적 특성 최적화 (Rheological Optimization)
 ├── en/                ← 영어 실습 콘텐츠 (English Content)
 │   ├── README.md      ← English Main Portfolio Document
 │   ├── week2/         ← [Week 2] Circularity & Sphericity Analysis
 │   ├── week3/         ← [Week 3] Volume & Surface Area Estimation
-│   └── week4/         ← [Week 4] Density, Porosity & Virtual 3D Packing
+│   ├── week4/         ← [Week 4] Density, Porosity & Virtual 3D Packing
+│   └── week5/         ← [Week 5] Rheological Properties Optimization
 └── .agents/workflows/ ← 자동화 스크립트 및 스킬 모음 (Automation workflows)
 ```
 
