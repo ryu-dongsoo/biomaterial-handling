@@ -84,8 +84,11 @@ Analyze contact radius, maximum stress, and pressure distribution of curved biom
   - [`step3_hertz_contact_simulator.py`](week9/step3_hertz_contact_simulator.py): Interactive contact simulator (sliders + radio buttons)
 - ➡️ **[View Detailed Lab Tutorial for This Week](week9/Week09_Lab_Contact_Stress_Hertz.md)**
 
-### [Week 10] (To be updated in upcoming weeks)
-- (Next week update...)
+### [Week 10] Impact Characteristics & Damage Prediction Modeling — Mechanical Properties II
+Track the dropping impact behavior of biomaterials using Tracker video analysis software, and utilize Python to calculate the coefficient of restitution and simulate whether the critical damage energy (Bio-yield) is exceeded.
+- **Key Learning Scripts**:
+  - [`step1_impact_analysis.py`](week10/step1_impact_analysis.py): Calculation of restitution coefficient and peak impact force based on drop height and collision duration, alongside damage prediction.
+- ➡️ **[View Detailed Lab Tutorial for This Week](week10/Week10_Lab_Impact_Damage_Prediction.md)**
 
 
 ---
@@ -161,7 +164,7 @@ Update the `README.md` file in the top-level folder each week to build your port
   - `[Week 07]` Developed creep/stress relaxation simulations for viscoelastic models (Maxwell, KV, Burgers).
   - `[Week 08]` Midterm Exam (Coverage: Week 1–7).
   - `[Week 09]` Developed Hertz contact stress calculator, 3D pressure distribution visualization, and interactive simulator.
-  - `[Week 10]` (To be updated next week)
+  - `[Week 10]` Implemented drop impact analysis script for restitution coefficient and damage prediction using Tracker physics data.
 
 ---
 *After completing your assignment, submit your GitHub repository URL (e.g., `https://github.com/your-username/biomaterial-handling/tree/main/en/week02`) to your TA/professor for final grading.*

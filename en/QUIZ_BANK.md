@@ -12,6 +12,7 @@
 - [Week 06: Complex Behavior of Non-Newtonian Fluids](#week-06-complex-behavior-of-non-newtonian-fluids)
 - [Week 07: Viscoelastic Properties — Creep & Stress Relaxation](#week-07-viscoelastic-properties--creep--stress-relaxation)
 - [Week 09: Contact Stress & Hertz Theory](#week-09-contact-stress--hertz-theory)
+- [Week 10: Impact Characteristics & Damage Prediction Modeling](#week-10-impact-characteristics--damage-prediction-modeling)
 
 ---
 
@@ -811,6 +812,53 @@ In Step 3's interactive Hertz simulator, which widgets enable real-time paramete
 <summary>View Answer</summary>
 
 **Answer: B** — Sliders adjust force, radius, and elastic modulus; radio buttons switch between contact surface materials.
+</details>
+
+---
+
+# Week 10: Impact Characteristics & Damage Prediction Modeling
+> 🔗 [View Detailed Lab Tutorial](week10/Week10_Lab_Impact_Damage_Prediction.md)
+
+## 💡 Discussion Topics
+
+### Discussion 1: Coefficient of Restitution and Energy Conservation in Free-Fall Impact
+**Background**: The coefficient of restitution is defined as the ratio of post-impact velocity to pre-impact velocity.
+> **Prompt**: Between a perfectly elastic collision (e=1) and a perfectly inelastic collision (e=0), what characteristics do biological resources exhibit? Discuss into what physical or biological forms the "lost" kinetic energy is converted within the biomaterial.
+
+### Discussion 2: Mechanical Properties of Cushioning Materials and Minimizing Peak Impact Force
+**Background**: Applying cushioning material extends the collision duration ($\Delta t$), thereby reducing the maximum impact force.
+> **Prompt**: When comparing the load-deformation curves of various packaging materials such as corrugated cardboard, expanded polystyrene (EPS), and bubble wrap, how should the yield strength and viscoelastic design criteria be established to achieve optimal cushioning?
+
+## 📝 Quiz Questions
+
+### Q1. [Theory] Coefficient of Restitution
+Which of the following correctly describes the formula for the coefficient of restitution $e$ using pre- and post-collision velocities?
+| Option | Content |
+| --- | --- |
+| A | $e = |v_1 - v_2|$ |
+| **B** | **$e = |v_2 / v_1|$** |
+| C | $e = v_1 \times v_2$ |
+| D | $e = v_1 / v_2$ |
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: B** — The coefficient of restitution is the absolute ratio of the relative velocity after collision to the relative velocity before collision.
+</details>
+
+### Q2. [Theory] Collision Duration and Impact Force
+When a free-falling apple hits the ground at the exact same velocity, what is the physical reason it suffers less damage if the floor is covered with a soft sponge compared to a hard concrete floor?
+| Option | Content |
+| --- | --- |
+| A | The sponge reduces the mass of the apple |
+| B | The sponge slows the pre-impact velocity |
+| **C** | **The collision duration is prolonged, reducing the maximum impact force** |
+| D | Gravity acts weaker on the sponge surface |
+
+<details>
+<summary>View Answer</summary>
+
+**Answer: C** — For a given impulse ($I = F \Delta t$), extending the collision time $\Delta t$ significantly decreases the average impact force $F$, preventing it from exceeding the tissue rupture threshold.
 </details>
 
 ---

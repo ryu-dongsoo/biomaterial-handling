@@ -23,6 +23,7 @@
 | Week 07 | 점탄성 특성 — 크리프와 응력 이완 | [`ko/week7/`](ko/week7/) |
 | Week 08 | 중간고사 | — |
 | Week 09 | 접촉 응력과 헤르츠 이론 — 기계적 특성 I | [`ko/week9/`](ko/week9/) |
+| Week 10 | 충격 특성과 손상 예측 모델링 — 기계적 특성 II | [`ko/week10/`](ko/week10/) |
 
 > 📝 **[주차별 심화 토론 & 퀴즈 모음](ko/QUIZ_BANK.md)**
 
@@ -45,6 +46,7 @@ This repository is the official portfolio for the **Biomaterial Handling & Proce
 | Week 07 | Viscoelastic Properties — Creep & Stress Relaxation | [`en/week7/`](en/week7/) |
 | Week 08 | Midterm Exam | — |
 | Week 09 | Contact Stress & Hertz Theory — Mechanical Properties I | [`en/week9/`](en/week9/) |
+| Week 10 | Impact Characteristics & Damage Prediction — Mechanical Properties II | [`en/week10/`](en/week10/) |
 
 > 📝 **[Discussion Topics & Quiz Bank](en/QUIZ_BANK.md)**
 
@@ -63,7 +65,8 @@ biomaterial-handling/
 │   ├── week5/         ← [5주차] 유변학적 특성 최적화 (Rheological Optimization)
 │   ├── week6/         ← [6주차] 비뉴턴 유체의 복합 거동 (Non-Newtonian Fluids)
 │   ├── week7/         ← [7주차] 점탄성 특성 (Viscoelastic Properties)
-│   └── week9/         ← [9주차] 접촉 응력과 헤르츠 이론 (Contact Stress & Hertz Theory)
+│   ├── week9/         ← [9주차] 접촉 응력과 헤르츠 이론 (Contact Stress & Hertz Theory)
+│   ├── week10/        ← [10주차] 충격 특성과 손상 예측 (Impact Characteristics & Damage Prediction)
 ├── en/                ← 영어 실습 콘텐츠 (English Content)
 │   ├── README.md      ← English Main Portfolio Document
 │   ├── week2/         ← [Week 2] Circularity & Sphericity Analysis
@@ -72,7 +75,8 @@ biomaterial-handling/
 │   ├── week5/         ← [Week 5] Rheological Properties Optimization
 │   ├── week6/         ← [Week 6] Complex Non-Newtonian Behavior & Power Law Simulation
 │   ├── week7/         ← [Week 7] Viscoelastic Properties — Creep & Stress Relaxation
-│   └── week9/         ← [Week 9] Contact Stress & Hertz Theory — Mechanical Properties I
+│   ├── week9/         ← [Week 9] Contact Stress & Hertz Theory — Mechanical Properties I
+│   ├── week10/        ← [Week 10] Impact Characteristics & Damage Prediction Modeling
 └── .agents/workflows/ ← 자동화 스크립트 및 스킬 모음 (Automation workflows)
 ```
 
