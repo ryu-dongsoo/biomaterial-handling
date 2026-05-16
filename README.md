@@ -16,7 +16,7 @@
 
 | 주차 | 주제 | 폴더 |
 |------|------|------|
-| Week 01 | 오리엔테이션 및 실습 기초 환경 구축 | — |
+| Week 01 | 오리엔테이션 및 실습 기초 환경 구축 | [`ko/실습_환경_설정_가이드.md`](ko/실습_환경_설정_가이드.md) |
 | Week 02 | 원형도·구형도 분석 알고리즘 | [`ko/week2/`](ko/week2/) |
 | Week 03 | 체적·표면적 수치 적분 추정 | [`ko/week3/`](ko/week3/) |
 | Week 04 | 밀도·공극률 측정 및 가상 패킹 시뮬레이션 | [`ko/week4/`](ko/week4/) |
@@ -28,6 +28,8 @@
 | Week 10 | 충격 특성과 손상 예측 모델링 — 기계적 특성 II | [`ko/week10/`](ko/week10/) |
 | Week 11 | 광학적 특성과 색채 공학 — 자동 선별 | [`ko/week11/`](ko/week11/) |
 | Week 12 | 광학적 특성 II — 분광 분석 | [`ko/week12/`](ko/week12/) |
+| Week 13 | 음향 특성 — FFT 기반 경도 분석 | [`ko/week13/`](ko/week13/) |
+| Week 14 | 열적 특성 — 냉각 시뮬레이션 | [`ko/week14/`](ko/week14/) |
 
 > 📝 **[주차별 심화 토론 & 퀴즈 모음](ko/QUIZ_BANK.md)**
 
@@ -51,6 +53,10 @@ This repository is the official portfolio for the **Biomaterial Handling & Proce
 | Week 08 | Midterm Exam | — |
 | Week 09 | Contact Stress & Hertz Theory — Mechanical Properties I | [`en/week9/`](en/week9/) |
 | Week 10 | Impact Characteristics & Damage Prediction — Mechanical Properties II | [`en/week10/`](en/week10/) |
+| Week 11 | Optical Properties & Color Engineering | [`en/week11/`](en/week11/) |
+| Week 12 | Optical Properties II — Spectroscopy | [`en/week12/`](en/week12/) |
+| Week 13 | Acoustic Properties — FFT-Based Firmness Analysis | [`en/week13/`](en/week13/) |
+| Week 14 | Thermal Properties — Cooling Simulation | [`en/week14/`](en/week14/) |
 
 > 📝 **[Discussion Topics & Quiz Bank](en/QUIZ_BANK.md)**
 
@@ -71,6 +77,10 @@ biomaterial-handling/
 │   ├── week7/         ← [7주차] 점탄성 특성 (Viscoelastic Properties)
 │   ├── week9/         ← [9주차] 접촉 응력과 헤르츠 이론 (Contact Stress & Hertz Theory)
 │   ├── week10/        ← [10주차] 충격 특성과 손상 예측 (Impact Characteristics & Damage Prediction)
+│   ├── week11/        ← [11주차] 광학적 특성과 색채 공학 (Optical Properties & Color Engineering)
+│   ├── week12/        ← [12주차] 분광 분석 (Spectroscopy & PLSR)
+│   ├── week13/        ← [13주차] 음향 특성 — FFT 경도 분석 (Acoustic Firmness)
+│   ├── week14/        ← [14주차] 열적 특성 — 냉각 시뮬레이션 (Thermal Cooling)
 ├── en/                ← 영어 실습 콘텐츠 (English Content)
 │   ├── README.md      ← English Main Portfolio Document
 │   ├── week2/         ← [Week 2] Circularity & Sphericity Analysis
@@ -79,8 +89,12 @@ biomaterial-handling/
 │   ├── week5/         ← [Week 5] Rheological Properties Optimization
 │   ├── week6/         ← [Week 6] Complex Non-Newtonian Behavior & Power Law Simulation
 │   ├── week7/         ← [Week 7] Viscoelastic Properties — Creep & Stress Relaxation
-│   ├── week9/         ← [Week 9] Contact Stress & Hertz Theory — Mechanical Properties I
-│   ├── week10/        ← [Week 10] Impact Characteristics & Damage Prediction Modeling
+│   ├── week9/         ← [Week 9] Contact Stress & Hertz Theory
+│   ├── week10/        ← [Week 10] Impact Characteristics & Damage Prediction
+│   ├── week11/        ← [Week 11] Optical Properties & Color Engineering
+│   ├── week12/        ← [Week 12] Spectroscopy & PLSR
+│   ├── week13/        ← [Week 13] Acoustic Properties — FFT Firmness
+│   ├── week14/        ← [Week 14] Thermal Properties — Cooling Simulation
 └── .agents/workflows/ ← 자동화 스크립트 및 스킬 모음 (Automation workflows)
 ```
 

@@ -17,6 +17,7 @@ Each week, students download (clone) newly provided lab materials organized in *
 
 ### [Week 01] Orientation & Setting Up the Development Environment
 - Python and GitHub account setup, local development environment (VS Code, etc.) configuration, and repository creation
+- ➡️ **[View Detailed Lab Tutorial for This Week](Lab_Environment_Setup_Guide.md)**
 
 ### [Week 02] Geometric Shape Index Analysis: Circularity & Sphericity Algorithm Implementation
 Learn the fundamentals of digital image processing and compute key physical characteristics of apple specimens — **Circularity and Sphericity** — from captured images.
@@ -105,6 +106,30 @@ Track the dropping impact behavior of biomaterials using Tracker video analysis 
   - [`step1_impact_analysis.py`](week10/step1_impact_analysis.py): Calculation of restitution coefficient and peak impact force based on drop height and collision duration, alongside damage prediction.
 - ➡️ **[View Detailed Lab Tutorial for This Week](week10/Week10_Lab_Impact_Damage_Prediction.md)**
 
+### [Week 11] Optical Properties & Color Engineering
+Analyzing color space characteristics (HSV, CIE Lab) from agricultural images to implement machine vision-based automated sorting mechanisms.
+- **Main Scripts**:
+  - `step1_color_sorting.py`: Color space conversion from BGR to HSV and CIE Lab, thresholding to extract ripeness (Red) regions of tomatoes, and comparative visualization.
+- ➡️ **[View Detailed Lab Tutorial](week11/Week11_Lab_Color_Engineering.md)**
+
+### [Week 12] Optical Properties II — Spectroscopy
+Applying multivariate data analysis techniques based on Near-Infrared (NIR) absorbance spectrum data to non-destructively predict internal Brix.
+- **Main Scripts**:
+  - `step1_spectroscopy_plsr.py`: Spectral data preprocessing (SNV, Savitzky-Golay 1st derivative), PLSR model training, and prediction error analysis (R², RMSE) visualization.
+- ➡️ **[View Detailed Lab Tutorial](week12/Week12_Lab_Spectroscopy.md)**
+
+### [Week 13] Acoustic Properties — FFT-Based Firmness Analysis
+Extracting resonance frequency from impact excitation via FFT and computing stiffness coefficient ($S = f^2 m^{2/3}$) for maturity-based grade classification.
+- **Key Learning Scripts**:
+  - `step1_acoustic_fft.py`: Virtual impact response generation → FFT spectrum → `scipy.signal.find_peaks` peak detection → Stiffness scatter plot + interactive slider UI
+- ➡️ **[View Detailed Lab Tutorial](week13/Week13_Lab_Acoustic_Firmness.md)**
+
+### [Week 14] Thermal Properties — Cooling Simulation and Energy Engineering
+Solving 1D spherical heat conduction PDE using SciPy `solve_ivp` to simulate center/surface temperature changes and calculate half-cooling time.
+- **Key Learning Scripts**:
+  - `step1_cooling_simulation.py`: Thermal property parameters → FDM spatial discretization → RK45 time integration → Center/surface temperature time series + 3 interactive sliders (h, R, T_init)
+- ➡️ **[View Detailed Lab Tutorial](week14/Week14_Lab_Thermal_Cooling.md)**
+
 
 ---
 
@@ -180,6 +205,10 @@ Update the `README.md` file in the top-level folder each week to build your port
   - `[Week 08]` Midterm Exam (Coverage: Week 1–7).
   - `[Week 09]` Developed Hertz contact stress calculator, 3D pressure distribution visualization, and interactive simulator.
   - `[Week 10]` Implemented drop impact analysis script for restitution coefficient and damage prediction using Tracker physics data.
+  - `[Week 11]` Color space conversion-based ripeness segmentation model implementation.
+  - `[Week 12]` NIR spectral preprocessing and Brix prediction modeling lab.
+  - `[Week 13]` Acoustic FFT-based resonance peak detection and stiffness coefficient simulator development.
+  - `[Week 14]` 1D spherical cooling PDE simulation and digital twin-based predictive control overview.
 
 ---
 *After completing your assignment, submit your GitHub repository URL (e.g., `https://github.com/your-username/biomaterial-handling/tree/main/en/week02`) to your TA/professor for final grading.*
