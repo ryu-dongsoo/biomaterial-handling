@@ -13,10 +13,6 @@
 - [Week 07: Viscoelastic Properties — Creep & Stress Relaxation](#week-07-viscoelastic-properties--creep--stress-relaxation)
 - [Week 09: Contact Stress & Hertz Theory](#week-09-contact-stress--hertz-theory)
 - [Week 10: Impact Characteristics & Damage Prediction Modeling](#week-10-impact-characteristics--damage-prediction-modeling)
-- [Week 11: Optical Properties & Color Engineering](#week-11-optical-properties--color-engineering)
-- [Week 12: Optical Properties II — Spectroscopy](#week-12-optical-properties-ii--spectroscopy)
-- [Week 13: Acoustic Properties — FFT-Based Firmness Analysis](#week-13-acoustic-properties--fft-based-firmness-analysis)
-- [Week 14: Thermal Properties — Cooling Simulation and Energy Engineering](#week-14-thermal-properties--cooling-simulation-and-energy-engineering)
 
 ---
 
@@ -981,188 +977,46 @@ The evaluation results on the test set yielded `Test R² = 0.92, RMSE = 0.65`. W
 > 🔗 [View Detailed Lab Tutorial](week13/Week13_Lab_Acoustic_Firmness.md)
 
 ## 💡 Discussion Topics
-
-### Discussion 1: Acoustic Testing Reliability in Noisy Factory Environments
-**Background**: Unlike clean laboratory signals, sorting factories have extreme background noise from rollers, motor vibrations, etc.
-> **Prompt**: Between band-pass filtering and contact-type piezoelectric sensors, which approach is more effective for on-site noise isolation, and what are the engineering trade-offs of each method?
-
-### Discussion 2: Stiffness Coefficient Correction for Non-Spherical Fruits
-**Background**: The stiffness index $S = f^2 m^{2/3}$ assumes perfectly spherical fruits. Ellipsoidal shapes (watermelon, melon) exhibit multiple resonance modes.
-> **Prompt**: How should the stiffness index model be corrected for non-spherical fruits, and what measurement protocols can minimize resonance frequency variance due to impact location?
-
-### Discussion 3: Deep Learning Acoustic Classification Potential and Limitations
-**Background**: Research actively applies MFCC or spectrogram images as CNN inputs for defect classification.
-> **Prompt**: Compare the advantages (noise tolerance, automatic feature extraction) and disadvantages (labeling cost, interpretability) of deep learning approaches versus numerical stiffness threshold methods.
+### Topic 1: Limitations of the Mass Correction Formula
+**Background**: The firmness index model uses the formula $S = f^2 m^{2/3}$ to correct for mass effects based on resonance frequency.
+> **Discussion**: Discuss whether this mass correction formula would still yield accurate results if the fruit is highly elliptical rather than perfectly spherical.
 
 ## 📝 Quiz Questions
-
-### Q1. [Theory] Resonance Frequency and Maturity Relationship
-How does the resonance frequency of impact sound change as fruit maturity progresses?
-| Option | Content |
+### Q1. [Theory] Role of FFT
+What is the process of converting a time-domain impact sound signal into the frequency domain?
+| Options | Description |
 | --- | --- |
-| A | Shifts to higher frequency range |
-| **B** | **Shifts to lower frequency range — elasticity decreases due to tissue softening** |
-| C | Frequency unchanged, only amplitude decreases |
-| D | Changes randomly |
+| A | Fourier Transform |
+| **B** | **Fast Fourier Transform (FFT)** |
+| C | Laplace Transform |
+| D | Wavelet Transform |
 
 <details>
-<summary>View Answer</summary>
-
-**Answer: B** — Pectin degradation loosens cell wall bonds, reducing elastic modulus and lowering the resonance frequency.
-</details>
-
-### Q2. [Theory] Purpose of Mass Correction in Stiffness Index
-Why does the stiffness index $S = f^2 \times m^{2/3}$ include the mass ($m$) term?
-| Option | Content |
-| --- | --- |
-| A | Reflects the physical law that larger mass means higher firmness |
-| **B** | **Mechanically corrects resonance frequency deviation between fruits of different sizes for fair comparison** |
-| C | Statistical correction to reduce mass measurement error |
-| D | Mass data is a required FFT computation input |
-
-<details>
-<summary>View Answer</summary>
-
-**Answer: B** — Even fruits with identical elastic properties will exhibit different resonance frequencies if their sizes (masses) differ, so mass weighting correction enables equivalent comparison.
-</details>
-
-### Q3. [Theory] Core Role of FFT
-What is the most essential purpose of applying FFT to impact response signals?
-| Option | Content |
-| --- | --- |
-| A | Shorten signal time length to improve processing speed |
-| B | Convert analog signals to digital |
-| **C** | **Decompose complex time-domain waveforms into individual frequency components to extract resonance peaks** |
-| D | Automatically remove noise |
-
-<details>
-<summary>View Answer</summary>
-
-**Answer: C** — FFT decomposes complex time-domain waves into sums of sinusoids, quantifying the energy magnitude of each frequency component.
-</details>
-
-### Q4. [Python] Peak Detection Function
-Which function was used to automatically detect resonance peaks in the FFT spectrum?
-| Option | Content |
-| --- | --- |
-| A | `np.argmax()` |
-| B | `scipy.optimize.curve_fit` |
-| **C** | **`scipy.signal.find_peaks`** |
-| D | `np.fft.rfft()` |
-
-<details>
-<summary>View Answer</summary>
-
-**Answer: C** — `find_peaks` sets minimum height and minimum inter-peak distance conditions to selectively extract meaningful resonance peaks while excluding noise.
-</details>
-
-### Q5. [Lab] Nyquist Theorem and Sampling Rate
-When the maximum resonance frequency of interest is 2,000 Hz, what is the minimum sampling rate per the Nyquist theorem?
-| Option | Content |
-| --- | --- |
-| A | 1,000 Hz |
-| B | 2,000 Hz |
-| **C** | **4,000 Hz or higher** |
-| D | 44,100 Hz (fixed) |
-
-<details>
-<summary>View Answer</summary>
-
-**Answer: C** — The Nyquist theorem requires sampling at minimum 2× the target frequency, so 4,000 Hz minimum is required. The lab uses 44,100 Hz with ample margin.
+<summary>View Answer & Explanation</summary>
+**Answer: B** — FFT is used to efficiently detect the dominant frequency peak from complex waveforms.
 </details>
 
 ---
 
-# Week 14: Thermal Properties — Cooling Simulation
+# Week 14: Thermal Properties — Cooling Simulation and Energy Engineering
 > 🔗 [View Detailed Lab Tutorial](week14/Week14_Lab_Thermal_Cooling.md)
 
 ## 💡 Discussion Topics
-
-### Discussion 1: Biot Number and Model Selection Criteria
-**Background**: $Bi < 0.1$ allows lumped capacitance model; $Bi > 0.1$ requires 1D PDE simulation.
-> **Prompt**: When the lumped model is incorrectly applied to an apple ($Bi \approx 1.9$), how much cooling time estimation error occurs, and what impact does this have on actual refrigeration system capacity design?
-
-### Discussion 2: Incorporating Respiration Heat into Simulation
-**Background**: The lab model considers only heat conduction and does not account for the biomaterial's own respiration-generated heat ($Q_{resp}$).
-> **Prompt**: How should the PDE equation and code be modified to add a respiration heat term $Q_{resp}(T)$, and quantitatively discuss the degree of cooling time underestimation when respiration heat is ignored.
-
-### Discussion 3: Predictive Control via Digital Twin
-**Background**: Reading real-time surface temperature from IoT sensors and injecting it into simulator boundary conditions enables pre-prediction of center temperature 2 hours ahead.
-> **Prompt**: What quantitative improvements in energy savings and quality uniformity can this measurement-prediction-control loop-based digital twin bring compared to conventional operator intuition-based management?
+### Topic 1: Cooling Behavior based on Biot Number
+**Background**: The temperature analysis model changes according to the Biot Number, defined as $Bi = hR/k$.
+> **Discussion**: Discuss the impact on the Biot Number and total cooling time when the convective heat transfer coefficient $h$ drops drastically due to dense packing of fruits in a box.
 
 ## 📝 Quiz Questions
-
-### Q1. [Theory] Physical Meaning of Thermal Diffusivity
-What does thermal diffusivity $\alpha = k / (\rho C_p)$ represent most accurately?
-| Option | Content |
+### Q1. [Theory] Thermal Diffusivity
+What is the formula for thermal diffusivity ($\alpha$) defined by the relationship between thermal conductivity ($k$), density ($\rho$), and specific heat ($C_p$)?
+| Options | Formula |
 | --- | --- |
-| A | Absolute magnitude of heat storage capacity |
-| **B** | **Ratio of heat transfer tendency to heat storage tendency — higher values mean faster temperature equilibration** |
-| C | Constant proportional only to material density |
-| D | Same concept as convective heat transfer coefficient |
+| **A** | **$\alpha = k / (\rho C_p)$** |
+| B | $\alpha = \rho C_p / k$ |
+| C | $\alpha = k \rho / C_p$ |
+| D | $\alpha = C_p / (k \rho)$ |
 
 <details>
-<summary>View Answer</summary>
-
-**Answer: B** — Higher thermal diffusivity means internal-external temperature imbalance resolves more quickly, determining the time scale of transient cooling simulations.
-</details>
-
-### Q2. [Theory] Biot Number Interpretation
-When apple's $Bi = hR/k = 1.9$, the correct interpretation is:
-| Option | Content |
-| --- | --- |
-| A | Internal thermal resistance is negligible, uniform temperature drop assumption valid |
-| **B** | **Internal thermal resistance exceeds external convective resistance, creating internal temperature gradients → PDE required** |
-| C | Cooling is impossible, adiabatic state |
-| D | Excessively high thermal conductivity characteristic of metals |
-
-<details>
-<summary>View Answer</summary>
-
-**Answer: B** — When $Bi > 0.1$, significant temperature differences exist between surface and center, requiring PDE solution considering spatial distribution.
-</details>
-
-### Q3. [Theory] Half-Cooling Time Definition
-In dimensionless temperature $\theta = (T - T_\infty)/(T_i - T_\infty)$, what does half-cooling time mean?
-| Option | Content |
-| --- | --- |
-| A | Time for center temperature to reach 0°C |
-| **B** | **Time for 50% of initial temperature difference to be eliminated (θ = 0.5)** |
-| C | Time for surface temperature to equal cooling fluid temperature |
-| D | Time for half the total heat to be removed |
-
-<details>
-<summary>View Answer</summary>
-
-**Answer: B** — In practice, the 7/8 cooling time (θ = 0.125, i.e., 87.5% reduction of initial temperature difference) is used as the pre-cooling completion criterion.
-</details>
-
-### Q4. [Theory] Newton's Law of Cooling
-In Newton's cooling law $q = hA(T_{surface} - T_{fluid})$, how can the convective heat transfer coefficient $h$ be increased?
-| Option | Content |
-| --- | --- |
-| A | Increase the specific heat of the agricultural product |
-| **B** | **Increase fan/blower speed to intensify forced convection** |
-| C | Lower the cooling fluid temperature |
-| D | Reduce the fruit radius |
-
-<details>
-<summary>View Answer</summary>
-
-**Answer: B** — The convective coefficient $h$ depends on fluid velocity and turbulence intensity; increasing blowing speed can increase $h$ by orders of magnitude for maximum cooling efficiency.
-</details>
-
-### Q5. [Python] PDE Numerical Solver Function
-Which SciPy function was used for time integration after converting the 1D heat conduction PDE to an ODE system via finite differences?
-| Option | Content |
-| --- | --- |
-| A | `scipy.optimize.curve_fit` |
-| B | `scipy.signal.find_peaks` |
-| **C** | **`scipy.integrate.solve_ivp`** |
-| D | `scipy.interpolate.CubicSpline` |
-
-<details>
-<summary>View Answer</summary>
-
-**Answer: C** — `solve_ivp` is a general-purpose ODE solver that handles Initial Value Problems with automatic step optimization using integrators like RK45.
+<summary>View Answer & Explanation</summary>
+**Answer: A** — Thermal diffusivity determines how fast heat propagates through a material.
 </details>
